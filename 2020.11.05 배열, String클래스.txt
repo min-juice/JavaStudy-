@@ -1,0 +1,61 @@
+
+2020.11.05
+
+* api site : docs.oracle.com/javase/8/docs/api/index.html *
+[api 보다 구글링 선호]
+
+// 1. 배열의 크기를 알고 싶을 때 호출되는 속성? length
+// 2. 문자열의 크기를 알고 싶을 때 사용하는 메서드? length( )
+		System.out.println(str.length());
+
+//3. ArrayList<String> list = new ArrayList();
+// list.size();
+
+// 문자열의 특정 인덱스에 있는 문자를 알고 싶을 때? charAt()
+// msg의 가장 큰 인덱스에 해당하는 문자를 출력하시오
+// int a = msg.length() -1;
+// System.out.println(msg.charAt(a));
+	System.out.println(msg.charAt(msg.length()-1));
+
+// msg 문자열의 각 문자를 한 글자씩 모두 출력하시오
+	for(int i = 0; i < msg.length(); i++) {
+		System.out.println(msg.charAt(i));
+
+
+[String msg = "hello world";]
+// msg에 "el"이 들어 있나?
+// msg에 "ow"가 들어 있나?
+// contains( ) or indexOf( )
+	boolean result = msg.contains("z");
+
+// 특정 문자 또는 문자열의 시작문자의 인덱스를 반환하는 메서드 indexOf( );
+// 단, 해당 문자 또는 문자열이 없으면 -1 반환
+	int idx = msg.indexOf('z');
+		System.out.println(result);
+		System.out.println(idx);
+
+//문자열에서 검색된 동일문자 중, 첫번째 문자의 인덱스는? 
+		System.out.println(msg.indexOf('l'));
+
+//문자열에서 검색된 동일문자 중 가장 마지막 문자의 인덱스는 lastIndexOf( );
+	idx = msg.lastIndexOf('l');
+		System.out.println(idx);
+
+//문자열에서 검색된 동일문자 중, 중간문자의 인덱스는? 
+	idx = msg.indexOf('l');  -->첫번째 먼저 구하기.
+	idx = msg.indexOf('l', idx+1);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

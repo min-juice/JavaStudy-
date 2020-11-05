@@ -1,0 +1,123 @@
+
+2020.11.04
+
+**배열은 반복문을 쓰기위해 사용함**
+
+2차원 배열 안에는 1차원 배열이 들어있다.
+
+1번) 최종 요솟값의 자료형이 StringBuffer인 2차원 배열 arr에는
+5개의 1차원 배열이 있고,  그 안에 있는 1차원 배열의 크기는 3
+=> StringBuffer[][] arr = new StringBuffer[5][3];
+		//StringBuffer[] arr1 = arr[0];
+		//System.out.println(arr1.length);
+
+2번) 최종 요솟값의 자료형이 Dog인 2차원 배열 arr의 크기는 10,
+그 안에 있는 배열의 크기는 2
+=> Dog[][] arr = new Dog[10][2];
+
+2-1번) arr의 모든 요솟값을 출력하시오
+=> for(int i = 0; i<arr.length; i++) {
+			System.out.println(arr[i]);
+			//Dog[] dogs = arr[i];
+			//System.out.println(dogs);
+
+2-2번) arr의 최종 요솟값을 모두 출력하시오
+=> for(int i = 0; i<arr.length; i++) {
+			Dog[] dogs = arr[i];
+			System.out.println(arr[i]);
+			
+		for(int j = 0; j< dogs.length; j++) {
+			System.out.println(arr[i][j]);
+}
+
+3번) 	public void me22() {
+		int[][] arr = new int[5][4];
+arr의 모든 요솟값을 출력하시오
+
+=>		int[][] arr = new int[5][4];
+		for(int i = 0; i <arr.length; i++) {
+			System.out.println(arr[i]);
+			//int[] a = arr[i];
+			//System.out.println(a);
+3-1번) arr의 최종 요솟값을 모두 출력하시오
+=> 		System.out.println(arr[i]);
+		for (int j = 0; j < arr[i].length; j++) {
+			System.out.println(arr[i][j]);
+3-2번) arr의 인덱스가 0인 요솟값의 인덱스가 2인 요솟값을 출력
+=> 		System.out.println(arr[0][2]);
+
+3-3번) arr의 가장 큰 인덱스의 요솟값의 가장 작은 인덱스의
+요솟값을 100으로 설정하시오
+=>		arr[arr.length - 1][0] = 100;
+
+3-4번) arr의 가장 큰 인덱스의 요솟값을 가장 작은 인덱스의
+요솟값을 출력하시오
+=> 		System.out.println(arr[arr.length-1][0]);
+
+4번) 5 ~ 0 이 순환되면서 배열에 들어감
+ int형 2차원 5X3의 크기
+
+=> 		int[][] arr4 = {
+				{5, 6, 7},
+				{8, 9, 0},
+				{1, 2, 3},
+				{4, 5, 6},
+				{7, 8, 9}
+		};
+
+4-1번) arr4의 [2][1]의 요솟값을 100으로 수정하여라
+=> arr4[2][1] = 100;
+
+4-2번) arr4의 3번째 요솟값의 모든 최종 요솟값을 구하라
+=>  for(int i = 0; i <arr4[2].length; i++) {
+	System.out.println(arr4[2][i]);
+
+5번) 5 ~ 0 이 순환되면서 배열에 들어감
+ int형 3차원 3X1X4의 크기
+
+=>		int[][][] arr3 = {
+			{
+			{5, 6, 7, 8}
+			},
+			{
+			{9, 0, 1, 2}
+			},
+			{
+			{3, 4, 5, 6}
+			}
+	};
+
+5-1번) arr3의 마지막 index의 요솟값의 1번째 요솟값을 출력하시오
+=> int[] sub2 = arr3[arr3.length-1][0];
+	System.out.println(sub2);
+
+<가변형 배열>
+
+1) 2차원의 배열 크기가 제각각 new int[3][] 이므로,
+직접 입력한 후에 for문을 사용할 수 있음.
+
+public void me5() {
+	int[][] arr = new int[3][];
+
+	arr[0] = new int[] {1, 2, 3, 4};
+	arr[1] = new int[] {0, 2, 4};
+	arr[2] = new int[] {1, 3, 5, 7, 9};
+				
+	for(int i =0; i<arr.length; i++) {
+		for(int j=0; i<arr[i].length; i++) {
+		System.out.println(arr[i][j]);
+
+2) 2차원의 크기가 모두 같기 new int[3][10] 때문에 바로 for문 사용가능
+
+public void me4() {
+	int[][] arr = new int[3][10];
+
+	for(int i = 0; i<arr.length; i++) {
+		for(int j=0; j<arr[i].length; j++){
+			if (i==0) {
+				arr[i][j] = i + 1;
+			}else if (i ==1) {
+				arr[i][j] = i * 2;
+			}else {
+				arr[i][j] = i * 2 + 1;
+

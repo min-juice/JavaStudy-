@@ -1,0 +1,41 @@
+
+2020.11.04
+
+<String 클래스의 객체 생성 두 가지 방법>
+1. 명시적 객체 생성법 : String msg = new String("hello");
+2. 암시적 객체 생성법 : String msg2 = "hello";
+=> 두 생성법의 차이점 : 객체 생성 메모리 위치가 다름
+
+String :
+ - 불변의 객체
+ - 문자열이 계속해서 누적 되는 경우 메모리 낭비, 성능 저하 발생
+
+StringBuffer :
+ - 매번 새로운 메모리가 아니라 메모리의 데이터를 수정하는 방식
+ - String의 단점을 보완하기 위해 사용함.
+ - StringBuffer는 활용도가 떨어지므로 마지막에 toString( )을
+    호출하여 활용도가 높은 String클래스로 전환해준다.
+ - 파라미터의 자료형이나 반환형의 자료형으로 이용 됨.
+
+ StringBuffer sb = new StringBuffer();
+
+ sb.append("안녕하세요");
+ sb.append("저는 홍길동입니다.");
+ sb.append("저는 조선 세종대왕 시대에 살고 있습니다.");
+
+ msg = sb.toString();
+
+[동일성 비교 Vs 동등성 비교]
+- 동일성 : = 사용 / 데이터와 그 저장 위치까지 확인
+- 동등성  : equals( ) 사용 / 데이터만 확인
+
+# 참조자료형 에서는 비교연산은 == 안 쓰고 *equals( )를 사용* 
+
+# 데이터가 같을 경우, 같은 객체로 인식하게 하는 방법
+
+ String msg1 = new String("a");
+		String msg2 = new String("a");
+		String msg3 = "a";
+		String msg4 = "a";
+
+ System.out.println(msg1.equals(msg2));

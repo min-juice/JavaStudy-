@@ -1,0 +1,43 @@
+1. MainEx의 디폴트 생성자를 만드시오 (생성자는 class의 이름과 같음)
+
+2. 변수 b는 false 값을 갖고 있는 지역변수다.
+
+3. 변수 c는 정수를 갖을 수 잇는 멤버 변수이다.
+
+4. MainEx의 디폴트 생성자 안에서 멤버변수 c의 44를 초기화 하세요.
+
+5. MethodTest 클래스에 sayHello라는 메서드를 만드세요.
+  (무반환, 무파람) 하는일은 "Hello~"를 콘솔에 출력.
+
+6. MethodTest 클래스에 callName이라는 메서드를 생성합니다.
+ 무반환 유파람 / 파라미터는 이름을 넘겨줍니다.
+ 실행내용 : sysout("안녕하세요, "+ 파라미터값");
+
+7. MethodTest 클래스에 printDan이라는 메서드를 생성합니다.
+ 무반환 유파람 / 파라미터는 출력할 단을 넘겨줍니다.
+ 실행내용 : 5, 10, 15, 20, 25 ....
+
+8. MethodTest클래스에 printScore이라는 메서드를 생성.
+ 무반환 유파람 / 파라미터는 학생명과 점수를 넘겨받음.
+ 실행내용 : 홍길동 100 점
+
+9. method클래스에 info라는 매서드 생성.
+무반환 유파람 / 파라미터는 이름 , 전화번호, 이메일주소 넘겨받음
+실행내용 : 홍길동 / 010-1234-5678 / abc@gmail.com
+
+10. method클래스에 printdan1 매서드 생성
+무반환 유파람 / 파라미터는 출력할 단을 넘겨줌
+실행내용 9 / 3 = "3"
+
+=======================================================
+
+5. project -> package -> class 생성 후
+MainEx -> (main method 생성)
+MethodTest -> ( public void sayhello() {
+sysout("hello~");
+}
+MainEx -> (MethodTest mt1 = new MethodTest(); //methodTest 클래스와 연결)
+mt.sayhello(); => 콘솔에 출력
+
+
+

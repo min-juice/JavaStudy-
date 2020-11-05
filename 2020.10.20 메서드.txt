@@ -1,0 +1,130 @@
+2020.10.20
+
+[복습]
+
+?? MainEx의 디폴트 생성자를 만드시오 (생성자는 class의 이름과 같음)
+ public MainEx() {
+		
+	}
+
+?? 변수 b는 false 값을 갖고 있는 지역변수다.
+public class MainEx {
+	
+	public MainEx() {
+	
+		boolean b = false;
+		
+	}
+
+?? 변수 c는 정수를 갖을 수 잇는 멤버 변수이다.
+ public class MainEx {
+	
+	int c;
+	
+	public MainEx() {
+	
+		boolean b = false;
+		
+	}
+
+?? MainEx의 디폴트 생성자 안에서 멤버변수 c의 44를 초기화 하세요.
+ public MainEx() {
+		
+		c = 44;
+		
+		boolean b = false;
+		
+	}
+
+# 지역변수 : 필드(생성자와 같은 들여쓰기?에 있는 것들) 외에 선언된 변수
+      - 스코프 : 선언된 이후 ~ 자신이 선언된 곳의 } 까지.
+# 멤버변수 : 필드에 선언된 변수
+      - 스코프 : 클래스 전체, 선언만, 일반적으로 초기화를 생성자에서 진행.
+      - 각 자료형의 디폴트 값: false,(공백), 0, null
+# 대입 : 반드시 변수가 선언된 상태에서 변수에 다른 값을 넣는 것.
+      - 변수 = 값(변수);  // 예) int a = 10; / a = 6; / b = a;
+# 초기화 : 변수를 선언하면서 값을 동시에 입력하는 것.
+# literal : 상수 값, 대입의 대상은 될 수가 없음. 예) 6 = 7; (x) / "hello" = "good"; (x)
+# 객체 : 참조자료형의 변수 선언
+     - Dog d = new Dog(); 에서 new Dog 가 객체.
+
+========================================================
+
+@ 메서드 = 함수 => 중복코드를 묶어주는 역할
+       - 객체의 능력(=기능, 행위)
+
+@ 메서드 호출 방법 / 소괄호 안에 파라미터의 자료형에 맞는 값을 넣어준다.
+    public void me1(int a) {} -> me1(44);
+    public void me1(int a) {} -> me1(new Dog());
+
+?? MethodTest 클래스에 sayHello라는 메서드를 만드세요.
+  (무반환, 무파람) 하는일은 "Hello~"를 콘솔에 출력.
+
+@ 무반환 void, 무파람 () // 만약 파라미터가 있다면 (자료형 변수명)
+- MethodTest 클래스 :
+ public void sayHello() {
+		
+		System.out.println("Hello~");
+- MainEx 클래스: 
+ MethodTest mt1 = new MethodTest();
+ mt1.sayHello();
+
+@ 메서드 선언 공식
+ - 접근제한자 반환형 메서드명 (파라미터자료형 파라미터변수) {
+                메서드 호출 시 실행 코드
+}
+"
+@메서드의 종류
+1. 무반환 무파람
+  - 생성 예제
+     public void me1() {
+        sysout("무반환 무파람");
+}
+
+  - 호출(사용) 예제
+    a. 같은 클래스 내에서는 me1();
+    b. 다른 클래스에서는 변수 선언하듯 객체 생성 후 
+       객체명.me1();
+
+2. 무반환 유파람
+ -예제
+ public void printScore(String name, int score){
+     sysout(name +" "+score+"점");
+}
+
+
+?? MethodTest 클래스에 callName이라는 메서드를 생성합니다.
+ 무반환 유파람 / 파라미터는 이름을 넘겨줍니다.
+ 실행내용 : sysout("안녕하세요, "+ 파라미터값");
+
+----> 파라미터 안에 (*변수 선언 하듯이 : 자료형 변수명*) 
+public void callName(String callName) {
+		
+		System.out.println("안녕하세요," + callName);
+
+ - 호출[변수명 ("자료형에 맞는 값")] => mt2.callName("박민주");
+
+?? MethodTest 클래스에 printDan이라는 메서드를 생성합니다.
+ 무반환 유파람 / 파라미터는 출력할 단을 넘겨줍니다.
+ 실행내용 : 5, 10, 15, 20, 25 ....
+
+----->> public void printDan(int printDan) {
+		
+		System.out.println(printDan * 1);
+		System.out.println(printDan * 2);
+		System.out.println(printDan * 3);
+		System.out.println(printDan * 4);
+		System.out.println(printDan * 5);
+
+ - 호출[변수명 (자료형에 맞는 값)] => mt2.printDan(5);
+
+?? MethodTest클래스에 printScore이라는 메서드를 생성.
+ 무반환 유파람 / 파라미터는 학생명과 점수를 넘겨받음.
+ 실행내용 : 홍길동 100 점
+------->> public void printScore(String name, int Score) {
+		
+		System.out.println(name + " " + Score + " " + "점");
+
+ - 호출[변수명 (자료형에 맞는 값)] => mt2.printScore("홍길동", 100);
+		                       mt2.printScore(new String"홍길동", 100);
+

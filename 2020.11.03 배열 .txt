@@ -1,0 +1,185 @@
+
+2020.11.03
+
+< 배열 >
+배열은 자바에서 객체로 취급한다
+따라서 배열을 선언할 때 new 연산자를 사용해서 생성한다.
+마지막 [ ]에는 배열의 크기를 넣는다.
+(기본 데이터형과는 달리 직접 값을 저장하는 것이 아니라 변수를 참조하여
+  주소만을 저장하기 때문에 주의해야 함)
+
+- 배열 사용 이유 :
+ 1. 반복문 사용을 위해서
+ 2. 여러 개의 데이터를 반환하기 위해서
+
+- 배열의 장점 :
+ 단일 데이터가 아닌 다수의 데이터 저장
+ 연관있는 데이터를 함께 변수에 저장하므로 데이터를 찾는데 용이
+
+
+# 3. type[ ] arr = new int[3]; 
+
+@ [선언과 동시에 값을 할당하여 초기화하는 방법] 가장 일반적.
+type[ ] arr = {Val1, Val2 , ...};
+
+@ type[ ] arr = type[ ] {Val1, Val2};    -> 4차원 배열 넣을 때 많이 사용
+
+[배열 요소에 값을 대입하거나 참조]
+- 배열이름 [인덱스] : 인덱스는 배열의 몇 번째 위치를 가리키는 숫자
+인덱스는 0부터 시작.
+-> 배열 요소에 값을 할당하는 방법 : 배열이름[인덱스] = 숫자; or " ";
+
+# 배열 크기 확인하는 속성 : arr.length
+-> length는 배열의 속성으로 반복문을 돌릴 때, 직접적인 배열의 크기 대신 사용.
+
+# 가장 큰 인덱스의 *요솟값*을 구하는 법 : 변수명.length에서 -1 를 뺀 것.
+
+# 호출할 때, 파라미터안에 데이터가 있으면 해당 클래스에서는 출력만 하고
+메인 메서드에서 데이터값을 넣은 후에 호출해야 함.
+
+예)
+-->  public void me22(String[] arrStr)
+     System.out.println(arrStr.length);
+===> String[] arrStr = {"hello", "world", "good", "morning"};
+		t1.me22(arrStr);
+
+--> public void me32(Dog[] dogs) {
+		int size = dogs.length;
+		System.out.println(size);
+===> Dog[] dogs = new Dog[] {new Dog(), new Dog(), new Dog(), new Dog()};
+		t1.me32(dogs);
+
+
+?? public void me11( )
+ 1. 배열의 크기가 100인 StringBuffer형의 1차원 배열 arrSb를 생성하시고
+ 2. arrSb의 배열 크기를 출력하시오
+	**arrSb가 갖고 있는 모든 요솟값을 출력을 함
+	   단, 출력 순서는 인덱스가 큰값부터 출력합니다.
+===> public void me11() {
+		StringBuffer[] arrSb = new StringBuffer[100];
+		
+		System.out.println(arrSb.length);
+** =======>> int a = arrSb.length -1;
+		
+		for(int i = a; i >= 0; i--) {
+			System.out.println(i);
+
+
+?? public void me12(Dog[ ] dogs)
+  1. Test class의 me12( )에서 파라미터로 넘어온 배열 데이터의 크기를 출력하시오.
+  2. main ( )에 가서 me12( )를 호출하시오.
+  *dogs의 가장 큰 인덱스 요솟값을 null로 설정하시오
+ ** dogs 배열에 있는 모든 dog 객체를 출력하시오.
+ *** dogs 배열에 있는 모든 dog 객체의 이름을 출력하시오.
+
+===> public void me12(Dog[] dogs) {
+		System.out.println(dogs.length);
+
+==> // t1.me12(new Dog[5]);
+		Dog[] arrDog = new Dog[3];
+		t1.me12(arrDog);
+* =======>> int largestIdx = dogs.length - 1;
+		dogs[dogs.length-1] = null;
+
+** =======>> for(int i = 0; i <dogs.length; i++) {
+			System.out.println(dogs[i]);
+
+*** =======>> for(int i = 0; i <dogs.length; i++) {
+		//Dog dogName = dogs[i];
+		//String name = dogName.getName();
+		//System.out.println(dogName);
+		
+		System.out.println(dogs[i].getName());
+
+?? public void me13( )
+   Sting data = "teacheryo#1#seoul#226#-1";
+   String[ ] arrData = data.split("#");
+    1. data/split("#")의 반환값을 arrData로 받고
+    2. arrData의 크기를 출력하시오
+     *arrDate의 가장 큰 인덱스의 요솟값을 "100"으로 설정하시오
+     ** arrDate의 가장 작은 인덱스의 요솟값을 "ezen"으로 설정하시오
+     ***arrDate의 모든 요솟값을 출력하시오
+     ****arrDate의 모든 요솟값의 첫 글자를 출력하시오.
+
+===>	public void me13() {
+		String data = "teacheryo#1#seoul#226#-1";
+		String[] arrData = data.split("#");
+		System.out.println(arrData.length);
+* =======>> arrData[arrData.length - 1] = " 100" ;
+
+** =======>> arrData[0] = "ezen";
+*** =======>> 		for(int i = 0; i <arrData.length; i++) {
+			System.out.println(arrData[i]);
+
+**** =======>> 		for(int i = 0; i <arrData.length; i++) {
+		String msg = arrData[i];
+		char c = msg.charAt(0);
+		
+			System.out.println(arrData);
+			System.out.println(c);
+
+?? public void me21( ) 
+   1. 자료형이 Dog인 1차원 배열 arrDog를 배열생성 두번째 방법으로 생성
+   2. 크기는 2로
+   3. arrDog의 배열 크기를 출력하시오
+   * arrDog의 가장 큰 인덱스의 요솟값을 null로 수정하시오
+
+===> public void me21() {
+		Dog [] arrDog = {new Dog(), new Dog()};
+		System.out.println(arrDog.length);
+		//Dog a = new Dog();
+		//Dog b = new Dog();
+		//Dog [] arrDog = {a,b};
+* =======>> arrDog[arrDog.length -1 ] = null;
+
+?? public void me22(String[] arrStr)
+   1. arrStr의 크기를 출력하시오
+   2. main( )에서 me22( )를 호출하시오
+   * arrStr의 index가 1인 곳의 값을 "12"로 변경하시오
+   ** arrStr의 index가 1인 곳의 값을 출력하시오
+
+===> public void me22(String[] arrStr) {
+		System.out.println(arrStr.length);
+==> String[] arrStr = {"hello", "world", "good", "morning"};
+		t1.me22(arrStr);
+* =======>> 		arrStr[1] = "12";
+** =======>>	// System.out.println(arrStr[1]);
+		String s1 = arrStr[1];
+		System.out.println(s1);
+ 
+
+?? public void me31( )
+	1. 배열 생성 세번째 방법으로 arrFloat 객체를 만듦
+	2. 배열에 들어가는 값은 3.14, 4.2, 9.8
+	3. arrFloat의 배열 크기를 출력
+
+===> 	public void me31() {
+		float[] arrFloat = new float[] {3.14F, 4.2F, 9.8F};
+		System.out.println(arrfloat.length);
+
+?? public void me32(Dog[ ] dogs)
+	1. dogs의 배열 크기를 출력하시오
+	2. main( )에서 me32( ) 메서드를 호출하시오
+	3. 단, 데이터가 필요하면 new Dog(), new Dog(), new Dog(), new Dog()
+===> 	public void me32(Dog[] dogs) {
+		int size = dogs.length;
+		System.out.println(size);
+==> Dog[ ] dogs = new Dog[] {new Dog(), new Dog(), new Dog(), new Dog()};
+		t1.me32(dogs);
+
+?? public void me1() {
+		int[] arrInt = new int[4];
+	1. arrInt에 0, 1, 2, 3을 입력하시오
+	2. arrInt에 0, 2, 4, 6을 입력하시오
+	3. arrInt에 1, 3, 5, 7을 입력하시오
+
+===>>for(int i = 0; i <arrInt.length; i++) {
+			arrInt[i] = i;
+		}
+		
+		for(int i = 0; i <arrInt.length; i++) {
+			arrInt[i] = i * 2;
+		}
+		
+		for(int i = 0; i <arrInt.length; i++) {
+			arrInt[i] = i *2 + 1;

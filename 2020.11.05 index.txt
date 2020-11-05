@@ -1,0 +1,174 @@
+
+2020.11.05
+
+배열 사용하는 이유 : 반복문 사용을 위해, 여러개의 데이터를 반환하기 위해
+
+* api site : docs.oracle.com/javase/8/docs/api/index.html *
+[api 보다 구글링 선호]
+
+// 1. *배열*의 크기를 알고 싶을 때 호출되는 속성? length
+// 2. *문자열*의 크기를 알고 싶을 때 사용하는 메서드? length( )
+		System.out.println(str.length());
+
+// 3. ArrayList<String> list = new ArrayList();
+// list.size();
+
+// 문자열의 특정 인덱스에 있는 문자를 알고 싶을 때? charAt()
+// int a = msg.length() -1;
+// System.out.println(msg.charAt(a));
+
+// msg의 가장 큰 인덱스에 해당하는 문자를 출력하시오
+	System.out.println(msg.charAt(msg.length()-1));
+
+// msg 문자열의 각 문자를 한 글자씩 모두 출력하시오
+	for(int i = 0; i < msg.length(); i++) {
+		System.out.println(msg.charAt(i));
+
+	[String msg = "hello world";]
+// msg에 "el"이 들어 있나?
+// msg에 "ow"가 들어 있나?
+// contains( ) or indexOf( )
+	boolean result = msg.contains("z");
+	System.out.println(result);
+
+// 특정 문자 또는 문자열의 시작문자의 인덱스를 반환하는 메서드 indexOf( );
+// 단, 해당 문자 또는 문자열이 없으면 -1 반환
+	//int idx = msg.indexOf('z');
+		//System.out.println(idx);
+		System.out.println(msg.indexOf('d'));
+
+//문자열에서 검색된 동일문자 중, 첫번째 문자의 인덱스는? 
+		System.out.println(msg.indexOf('l')); //2
+
+//문자열에서 검색된 동일문자 중, 중간문자의 인덱스는? 
+	idx = msg.indexOf('l');  //2 -->첫번째 먼저 구하기.
+	idx = msg.indexOf('l', idx+1); //3
+
+//문자열에서 검색된 동일문자 중 가장 마지막 문자의 인덱스는 lastIndexOf( );
+	idx = msg.lastIndexOf('l');
+		System.out.println(idx); //9
+
+// 문자열이 특정 문자열로 끝났는지 여부를 알고 싶을 때, endsWith( );
+	[String msg1 = "abcd.jpg";]
+	[String msg2 = "efgh.txt";]
+		
+	boolean result1 = msg1.endsWith("jpg");
+		System.out.println(result1); //true
+		
+	boolean result2 = msg2.endsWith(".txt");
+		System.out.println(result2); //true
+
+// 문자열이 특정 문자열로 시작하는지 알고 싶을 때, startsWith( );
+	[String msg = "hello";]
+
+	boolean result = msg.startsWith("h");
+		System.out.println(result); //true
+
+// 문자열끼리 데이터 값이 같은지 여부를 확인하고 싶을 때, equals( )
+// 대, 소문자 무시하고 싶을 때, equalsIgonoreCase( )
+// 주민등록번호, 이름 등 정보조회 같은 문자열 정보 확인할 때 많이 사용
+	[String msg1 = "hello";]
+	[String msg2 = new String("hello");]
+	[String msg3 = "Hello";]
+		
+	boolean result1 = msg1.equals(msg2);
+	boolean result2 = msg1.equals(msg3);
+		System.out.println(result1); //true
+		System.out.println(result2); //false
+		
+	boolean result3 = msg1.equalsIgnoreCase(msg3);
+		System.out.println(result3); //true
+
+// 좌우 공백을 제거할고 싶을 때, trim( )
+	String msg = "         he    llo         ";
+	
+		System.out.println(msg); //         he    llo  
+		System.out.println(msg.trim()); // he    llo
+-----> 변환안해서, 아직 msg는 좌우 공백이 있는 상태.
+
+	msg = msg.trim();
+		System.out.println(msg); // 이제 msg는 공백이 없음
+
+// + 연산자는 문자열에도 적용된다.
+// - 연산자는 문자열에 적용되지 않는다.
+
+		
+		[String msg1 = "hello world";]
+
+		System.out.println(msg1); // hello world
+		
+		int idx = msg1.indexOf("w"); //6
+		System.out.println(msg1.substring(idx)); // world
+
+// "hello world"에서 "hello"를 잘라내고 "world"만 남게 하고 싶으면 subString( )
+// String subMsg = "lo wor";
+// SubMsg 출력
+		[String msg1 = "hello world";]
+
+		idx = msg1.indexOf('l'); // 첫번째 l (2)
+		idx = msg1.indexOf('l', idx+1); // 두번째 l (3)
+		
+		int idx1 = msg1.indexOf('r'); // 첫번째 r (8)
+		
+		subMsg = msg1.substring(idx, idx1+1); // 두번째 l 과 8+1 (세번째 l)
+                           -----> subString(>=, <)
+
+		System.out.println(subMsg); // lo wor
+
+==> 1. 첫번째 ' l ' 구하는 법을 통해 두번째 ' l '  구하고
+       2. ' r ' 의 인덱스를 구하고
+       3. subString에 (두번째 l , r의 인덱스+1) 를 해야 함.
+       ( r에 +1을 안넣으면 <r 로 구해져서 r을 제외한 "lo wo"만 출력됨 )
+
+*** TEST]  // String sub = "mor" 출력하시오 ****
+	//String sub1 = "goo" 출력하시오
+	[String msg = "good morning"]
+
+// 특정 기준 문자(delim)를 이용하여 서로 다른 의미를 가진 문자열(=token)을 분할하기
+	[String msg = "teacheryo#1234#vip#1000##g";]
+
+	String[] arr = msg.split("#");	
+		System.out.println(arr[0]); // teacheryo
+		System.out.println(arr[1]); // 1234
+		System.out.println(arr[4]); // '공백'
+				      (마지막에는[g 뒤] # 입력 불가)
+		System.out.println(arr.length); // 6
+		
+	for(int i = 0 ; i < arr.length; i++) {
+			System.out.println(arr[i]); // 모두
+
+// StringTokenizer를 이용하여 원하는 부분의 token을 출력
+
+String msg = "minju#01029442724#vip#100#z";
+	StringTokenizer st = new StringTokenizer(msg, "#");
+	String[] arr = new String[st.countTokens()];
+		
+	int i = 0;
+		
+	while(st.hasMoreTokens()) {
+		String token = st.nextToken();
+			
+		arr[i] = token;
+			
+		i++;
+		}
+		System.out.println(arr[0]);
+		System.out.println(arr[1]);
+		System.out.println(arr[2]);
+		System.out.println(arr[3]);
+		System.out.println(arr[4]);
+
+// StringTokenizer를 이용하여 모든 token을 출력
+
+	for(int j=0; j<arr.length; j++) {
+			System.out.println(arr[j]);
+
+================================================
+
+
+
+
+
+
+
+

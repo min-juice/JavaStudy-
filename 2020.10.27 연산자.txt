@@ -1,0 +1,84 @@
+
+2020.10.27
+
+<CharAt> : 문자열의 특정 위치에 있는 한 문자를 반환한다.
+              => 문자열의 인덱스는 0부터 시작한다
+
+String charAt(int indx)
+
+public char getCaptainCarModelNameFirstChar() {
+		Car car = captain.getK7();
+		String modelName = captain.getK7().getModelname();
+		
+		char c = modelName.charAt(0);
+		
+		return c;
+
+
+
+1. member1의 개를 외부에서 입력
+public void chageMem1Dog(kr.co.ezen.Dog dog) {
+		member1.setHappy(dog);
+
+
+2. member1의 개이름을 외부에서 입력
+public void changeMem1DogName(String dogName) {
+		
+		member1.getHappy().setName(dogName);
+		
+
+<nullpointerexception(=NPE) 발생 이유>
+ - 객체에 값이 없는데, 객체가 갖고 있을 수 있는 자원에 접근할 때
+(*자원 : 객체가 갖고 있는 기능/구성요소 - 변수, 상수, 메서드)
+
+@멤버변수 안에 instance 변수
+ => 객체가 만들어 질 때마다 새로 만들어짐.
+
+#1970년 1월 1일 0시 0분 0초 000   --- 0
+  1970년 1월 1일 0시 0분 0초 001   --- 1
+  1970년 1월 1일 0시 0분 0초 010  --- 10
+  1970년 1월 1일 0시 0분 1초 000  --- 1000
+
+# new Date(Calendar.getInstance().getTimeInMillis()));
+
+# 	bTeam.fightmem1(aTeam);
+   ==> bTeam이 객체. 메서드를 생성하면 this. 는 bTeam에 속함.
+
+# sysout인 상황에서는
+System.out.println("활로 " + mon.toString()+"를 공격합니다.");
+= System.out.println("활로 " + mon +"를 공격합니다.");
+=====> toString() 생략 가능.
+
+# public class 클래스명 뒤에 extends object 가 숨어있음.
+
+=================================================
+<연산자> : 연산 기호
+
+@ 사칙연산 : +, -, *, /
+ + : 연산자 앞뒤에 있는 숫자를 더하라는 의미, 문자열과의 덧셈이 가능
+ - : 연산자 앞에 있는 숫자에서 뒤에 있는 숫자를 빼라는 의미
+
+@ 산술연산자 : +, -, *, /, %
+ - 나누기 연산자 :  몫 / 같은 숫자가 n번 반복된다
+                         [0,0,0,1,1,1,2,2,2,3,3,3 -> 3]
+ - 나머지 연산자 : a. 배수의 여부를 확인할 때 사용
+                       b. 특정 범위의 숫자가 계속 반복된다(0, 1 , 2 , 3 -> 4)
+                         [반복되는 숫자 중에서 가장 큰수 +1]
+
+@ 대입연산자 : = : 우측에 있는 것을 좌측에 대입.
+ a = b; : 우측의 값을 좌측에 대입하라.
+ a = 8; : 8을 a에 대입하라.
+ d = e; : (둘다 참조자료일 경우) e가 갖고 있는 객체의 주소를 d에 대입하라.
+ 
+@ 대입(복합)연산자  *항상 뒤에 있음* : +=, -=, *=, /=, %=
+ a += b; // a = a+b;
+ sum = sum + a; // sum += a;
+
+@ 스위치 알고리즘 : 1 과 0 이 번갈아가면서 나옴.
+ int a =1; 
+ SwitchAl( ) {  }
+     a = 1 - a ;
+  ===> sysout(a)
+  ==> 0
+         
+

@@ -1,0 +1,108 @@
+
+2020.11.02
+
+1번 문제) while 문
+0,2,4,6,8,10........46 까지 출력
+
+
+2번 문제) while 문
+99, 97, 95, 93, 91, 89 ......... 21 까지 출력
+
+
+2.5문제 ) while 문 // * n 번 찍기
+
+
+3번 문제) while 문 //구구단 (특정 단)
+
+
+4번 문제) 구구단 전체
+
+
+5번 문제) *, **, ***, **** n 번째 별
+
+
+6번 문제) 1, 1, 2, 3, 5, 8, 13, 21, 34, 55........ 피보나치 수
+15달이 지나가면 몇 일까 // 값 = 전전값 + 전값; / 전값 -> 전전값
+
+
+7번 문제) 0, 3, 6, 9........ 27336
+위 수열을 출력하려면 for문[반복]과 while문[조건] 중 어느것을 사용할지
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1번 답) public void me2() {
+		int i = 0;
+		while(i<47) {
+			System.out.println(i);
+			i = i + 2;
+
+2번 답) 	public void me21() {
+		int i = 99;
+		while(i>=21) {
+			System.out.println(i);
+			i = i -2; // i -= 2;
+
+2.5번 답) 	public void me31(int n) {
+		int i = 0;
+		while(i<n) {
+			System.out.print('*');
+			i++;
+
+3번 답) 	public void dan(int dan) {
+		int i = 1;
+		while(i<10) {
+			StringBuffer sb = new StringBuffer();
+			sb.append(dan);
+			sb.append(" x ");
+			sb.append(i);
+			sb.append(" = ");
+			sb.append(dan*i);
+			
+			System.out.println(sb.toString());
+			// String msh = sb.toString();
+			//System.out.println(msg);
+			
+			//System.out.println(dan + " X " + i + " = " + (dan*i));
+			
+			i++;
+
+4번 답)	public void gugudan() {
+		int i = 2;
+		while(i<10) {
+			System.out.println(i + " 단::::::::");
+			dan(i);
+			i++;
+
+5번 답)public void printStar(int n) {
+		int i = 0;
+		while(i<n) {
+			me31(i+1);
+			i++;
+
+6번 답) 	public void printPibo() {
+		int a = 1;
+		int b = 1;
+		for (int i = 1; i<15; i++) {
+			int c = a + b;
+			System.out.println(c);
+			a = b;
+			b = c;
+
+7번 답)	public void me8() {
+		int i = 0;
+		while(i<27337) {
+			System.out.println(i);
+			i = i + 3;

@@ -1,0 +1,23 @@
+phone
+<<com.naver>>
+
+- vol : int
+- light : int
+- power : boolean
+- lock : boolean
+
+constructors
+getters setters
+
++ volUp( ) : void
++ volDown( ) : void
++ lightUp( ) : void
++ lightDown( ) : void
++ powerOn( ) : void
++ powerOff( ) : void
++ lock( ) : void
++ unlock( ) : void
+
+0 <= light <= 20
+
+0 <= vol <= 30
