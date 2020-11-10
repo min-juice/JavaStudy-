@@ -1,0 +1,18 @@
+
+2020.11.10
+
+DTO 클래스(Data Transfer Object =TO/VO[Value Object]/domain)
+: 데이터 저장 전용 클래스
+: 데이터를 저장할 목적으로 만들어진 클래스
+
+1. Serializable 인터페이스 구현
+2. 변수 선언 시 사용되는 접근제한자는 무조건 private
+3. 디폴트 생성자 생성 (Java bean)
+4. 사용자 생성자 생성
+5. getters / setters
+6. toString( ) 오버라이딩
+7. hashCode( ) / equals( ) 오버라이딩
+
+
+for(int i = 0; i <DB.db.size(); i++) {
+	MemberDTO dto = DB.db.get(i);
