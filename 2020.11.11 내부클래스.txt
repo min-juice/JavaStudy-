@@ -1,0 +1,157 @@
+
+2020.11.11
+
+인터페이스 - 다형성, 오버라이딩, 다중상속을 지원
+
+1. 진짜 인터페이스가 여러개의 인터페이스를 상속
+2. 클래스가 여러개의 인터페이스를 구현
+
+============================================
+
+<멤버 내부 클래스 호출하는 법>
+클래스명.멤버클래스 변수 = new 클래스명( ). new 멤버클래스( );
+Test2.MemberClass mc1 = new Test2().new MemberClass();
+
+--->
+public class Test2 {
+	
+	private String msg;
+	
+	public class MemberClass{//멤버 내부 클래스
+		private int age;
+		
+		public void mc1() {
+			System.out.println("mc1");
+		}
+
+		public int getAge() {
+			return age;
+		}
+
+		public void setAge(int age) {
+			this.age = age;
+		}
+		
+	}
+
+======>
+	Test2.MemberClass mc1 = new Test2().new MemberClass();
+	mc1.mc1( );
+	mc1.getAge( );
+
+============================================
+
+<static 내부 클래스 호출하는 방법>
+클래스명.static클래스 변수 = new 클래스명.static클래스( );
+Test3.staticInnerClass sic = new Test3.staticInnerClass();
+
+---->
+public class Test3 {
+	
+	private String msg;
+	
+	public static class staticInnerClass{
+		private int age;
+		public static String name;
+		
+		public void sic() {
+			Test3 t3 = new Test3();
+			
+			System.out.println(t3.msg);
+			System.out.println("sic");
+			t3.me1();
+		
+		}
+
+		public int getAge() {
+			return age;
+		}
+
+		public void setAge(int age) {
+			this.age = age;
+		}
+
+=========>
+	Test3.staticInnerClass sic = new Test3.staticInnerClass();
+		sic.sic( );
+
+=============================================
+
+<local 내부 클래스 호출 하는 방법>
+[클래스안에서]
+local클래스 변수 = new local클래스( );
+LocalInnerClass lic1 = new LocalInnerClass();
+
+------>
+public void me1() {
+		int a = 10;
+		
+		class LocalInnerClass{
+			public void lic() {
+				System.out.println(a);
+			}
+		}
+
+==========>
+	LocalInnerClass lic1 = new LocalInnerClass();
+		lic1.lic();
+
+============================================
+
+<익명의 내부 클래스>
+
+클래스는 구조적으로 "class"키워드가 있어야 클래스이다.
+익명의 내부 클래스는 class 키워드가 없기 때문에
+"익명"의 내부 클래스라고 한다.
+
+1. 변수를 선언하면 쓰는 익명의 내부 클래스 : 가짜 익명의 내부 클래스
+ => 외부에서 호출이 가능
+2. 변수 선언 없이 사용하는 익명의 내부 클래스 : 진짜 익명의 내부 클래스
+ => 호출 자체가 불가, local영역에서 선언해야 함.
+
+1. 클래스명 변수 = new 클래스명 ( );
+Test5 t1 = new Test5();
+
+------>
+public class Test5 {
+	
+	private int a;
+	
+	
+	public Inter1 ano = new Inter1() {
+		
+		@Override
+		public void me1() {
+			// TODO Auto-generated method stub
+			
+		}
+	};
+}
+======>
+	Test5 t1 = new Test5();
+		t1.ano.me1();
+2.
+[클래스 안에서]
+
+-------->
+public Test6() {
+	new Inter1() {
+			
+		@Override
+		public void me1() {
+			System.out.println(1111);
+				
+		}
+	}.me1();
+		
+	new Thread(new Runnable() {
+			
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+				
+			}
+	}).start();
+	}
+
+
