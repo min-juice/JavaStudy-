@@ -1,0 +1,68 @@
+
+2020.11.12
+[Calendar]
+
+Calendar 객체 생성 방법:
+클래스명 변수명 = 클래스명.getInstance( );
+
+	// c를 이용해서 연도 정보 추출하기.
+		int year = c.get(Calendar.YEAR);
+		
+	//월 정보 추출하기
+		int month = c.get(Calendar.MONTH) +1;
+		
+	//일 정보 추출하기
+		int date = c.get(Calendar.DATE);
+		
+	// 요일 정보 추출하기
+		int day = c.get(Calendar.DAY_OF_WEEK);
+
+?? 1. 1950년 6월 25일은 무슨 요일인가? 요일만 출력하시오
+
+	Calendar c = Calendar.getInstance();
+	c.set(1950, Calendar.JUNE, 25);
+	int day = c.get(Calendar.DAY_OF_WEEK);
+	System.out.println(day);
+		
+		switch (day) {
+		case 1:
+			System.out.println("일요일");
+			break;
+		case 2:
+			System.out.println("월요일");
+			break;
+		case 3:
+			System.out.println("화요일");
+			break;
+		case 4:
+			System.out.println("수요일");
+			break;
+		case 5:
+			System.out.println("목요일");
+			break;
+		case 6:
+			System.out.println("금요일");
+			break;
+		default: System.out.println("토요일");
+			break;
+		}
+
+?? 2. 1950년 2월의 마지막날은 며칠까지 있을까요?
+	그리고 그날의 요일은 무엇인가요? 둘다 각각 출력하시오.
+
+?? 3. 2020년 11월 12일입니다. 20일 후에는 며칠일까요?
+// add( )는 calendar객체의 정보를 변경함
+// 특정 필드의 값에 주어진 값을 더해서 변경.
+
+public void me6() {
+	Calendar c = Calendar.getInstance();
+		System.out.println(c.getTime());
+		
+		c.add(Calendar.DATE, 20);
+		System.out.println(c.getTime());
+
+@ roll ( )
+- 해당 필드의 값만 변경이 되고 다른 필드의 값은 변경이 안 됨.
+	단, date - day는 연동 됨.
+
+

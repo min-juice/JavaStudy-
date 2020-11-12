@@ -1,0 +1,65 @@
+
+2020.11.12
+
+<Wrapper>
+
+	//Wrapper class
+	//AutoBoxing
+		Boolean a = false;
+		Character b = ' ';
+		Byte c = 0;
+		Short d = 0;
+		Integer e = 0;
+		Long f = 0L;
+		Float g = 0.0F;
+		Double h = 0.0;
+----------------------------------------------------------
+(int)
+	String msg = "123";
+	int i = Integer.parseInt(msg);
+		System.out.println(i+10); //133
+		System.out.println(msg+10); //12310
+
+-------------------------------------------------------------
+(boolean)
+	String msg = "false";
+	boolean b = Boolean.parseBoolean(msg);
+		System.out.println(b); //false
+		
+	boolean b2 = Boolean.valueOf(msg);
+		System.out.println(b2); //false
+
+---------------------------------------------------------------
+(char)
+		String msg = "h";
+		char c = msg.charAt(0);
+		System.out.println(c);
+
+================================================
+<Random>
+
+	//임의의 값의 범위가 3~10 까지
+	Random rnd = new Random();
+	int num = rnd.nextInt(8)+3;                   //0 + 3 ~ n -1+3
+	System.out.println(num); 	              // 3 ~ 10
+					// n-1+3 = 10
+					// n = 10-3+1
+
+-----------------------------------------------------------------------------
+
+	public void me5(int start, int end) {
+//start ~ end 범위에 있는 숫자가 임의로 나오도록 프로그래밍 하시오.
+	Random rnd = new Random();
+	int num = rnd.nextInt(end-start+1) + start;
+	System.out.println(num);
+
+-------------------------------------------------------------------------------
+[num1 과 num2 는 같은 시드 이므로, nextin( )안에 무슨 숫자를 넣어도 같다]
+	Random rnd1 = new Random(3);
+	Random rnd2 = new Random(3);
+		
+	int num1 = rnd1.nextInt(10000);
+	int num2 = rnd2.nextInt(10000);
+		
+		System.out.println(num1 == num2);  //true
+
