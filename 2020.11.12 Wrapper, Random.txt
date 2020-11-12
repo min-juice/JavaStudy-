@@ -46,9 +46,10 @@
 					// n = 10-3+1
 
 -----------------------------------------------------------------------------
+[(end-start+1) + start;]
 
-	public void me5(int start, int end) {
 //start ~ end 범위에 있는 숫자가 임의로 나오도록 프로그래밍 하시오.
+	public void me5(int start, int end) {
 	Random rnd = new Random();
 	int num = rnd.nextInt(end-start+1) + start;
 	System.out.println(num);
