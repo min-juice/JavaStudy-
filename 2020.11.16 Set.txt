@@ -1,0 +1,104 @@
+
+2020.11.16
+
+set -> HashSet
+
+Set <참조자료형> set = new HashSet <참조자료형>( );
+
+- 중복된 데이터를 허용하지 않음 (동등성 비교)
+	[동등성 비교 = 참조자료형]
+- 입력과 출력 사이에 상관관계가 없음 (index가 없음)
+- get( ) 없음 -> iterator ( ) 사용
+- add ( ) 입력
+- size( ) 크기
+- remove( ) 삭제
+  => llist에서 remove( int idx ), remove( Object obj )
+  => set에는 index가 없음. 따라서 remove( int idx ) 는 존재 X
+   		오직 remove(Object obj)만 존재
+
+# 순서대로 정렬하려면 Collections.sort(list);
+=========================================
+
+iterator ( ) : iterator 인터페이스 자료형으로 데이터 반환
+-> while문을 이용해서 set데이터를 획득
+eclipse에서도 이를 지원함.
+
+
+[while문 밖에서 인덱스 가져오는 방법]
+
+public void me1() {
+Set<Integer> set = new HashSet<Integer>(); //5개 들어감.
+		
+	set.add(1);
+	set.add(2);
+	set.add(3);
+	set.add(4);
+	set.add(5);
+	set.add(1);
+		
+	Iterator<Integer> it = set.iterator();
+@	List<Integer> list = new ArrayList<Integer>();
+	while (it.hasNext()) {
+		Integer integer = it.next();
+		System.out.println(integer);
+@		list.add(integer);
+			
+	}
+		
+@	int idx = list.indexOf(3);
+@	int num = list.get(idx);
+@	System.out.println(num);
+}
+
+-----------------------------------------------------------------------
+
+public void me4() {
+	Set<MemberDTO> set = new HashSet<MemberDTO>();
+	set.add(new MemberDTO("m001", "kim", 5));
+	set.add(new MemberDTO("m002", "lee", 12));
+	set.add(new MemberDTO("m003", "park", 53));
+	set.add(new MemberDTO("m004", "kang", 55));
+	set.add(new MemberDTO("m005", "choi", 11));
+		
+	int size = set.size();
+	System.out.println(size);
+
+// 1. 배열 arr에 set이 갖고 있는 데이터를 저장하고
+// 2. 그 중 id가 m005인 MemberDTO 객체를 이용해서
+// 3. 그 객체의 age 값을 출력하시오.
+
+	Iterator<MemberDTO> it =  set.iterator();
+	List<MemberDTO> list = new ArrayList<MemberDTO>();
+		
+	while (it.hasNext()) {
+		MemberDTO memberDTO =  it.next();
+		list.add(memberDTO);
+			
+	}
+		
+	int index = list.indexOf(new MemberDTO("m005", null, 0));
+	MemberDTO dto = list.get(index);
+	System.out.println(dto.getAge());
+
+//	 list = new ArrayList<MemberDTO>(set);
+---------------------------------------------------------------------
+
+lotto 생성
+
+public class Test {
+	
+public void Test() {
+	Set<Integer> set = new HashSet<Integer>();
+		
+	Random rnd = new Random();
+	while (set.size() < 6) {
+		int num = rnd.nextInt(45-1+1) + 1 ;
+		set.add(num);
+	}
+		
+		System.out.println(set);
+		
+
+}
+
+

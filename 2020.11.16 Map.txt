@@ -1,0 +1,86 @@
+
+2020.11.16
+
+<Map>
+
+public void me1() {
+// 1. map, HashMap
+// 2. map 객체를 만드세요.
+// 단, ket : String, Value : Integer
+
+	Map<String, Integer> map = new HashMap<String, Integer>();
+		
+	//map에 데이터 입력 -> put 사용
+	map.put("중력가속도", 9);
+	map.put("우리집 비밀번호", 12345);
+	map.put("서울과 부산간의 거리", 300);
+	
+	int g = map.get("중력가속도");
+		System.out.println(g);
+		
+	int password = map.get("우리집 비밀번호");
+		System.out.println(password);
+		
+	int leng = map.get("서울과 부산간의 거리");
+		System.out.println(leng);
+		
+}
+
+----------------------------------------------------------------------------------------
+
+public void me4() {
+	Map<String, List<Dog>> map = new HashMap<String, List<Dog>>();
+		
+	List<Dog> list1 = new ArrayList<Dog>();
+	list1.add(new Dog("d001", "누렁이", "진도인1", 3));
+	list1.add(new Dog("d002", "백구", "진도인2", 4));
+		
+	List<Dog> list2 = new ArrayList<Dog>();
+	list2.add(new Dog("d003", "happy", "독일인1", 3));
+	list2.add(new Dog("d004", "타크", "독일인2", 2));
+		
+	map.put("진돗개", list1);
+	map.put("셰퍼드", list2);
+		
+	List<Dog> a = map.get("진돗개");
+		System.out.println(a);
+		
+	for(int i = 0; i < a.size(); i++) {
+	Dog dog = a.get(i);
+	String name = dog.getName();
+		System.out.println(name);
+	}
+		
+	List<Dog> b = map.get("셰퍼드");
+		System.out.println(b);
+		
+	for(int i = 0; i < b.size(); i++) {
+	Dog dog = b.get(i);
+	String id = dog.getId();
+		System.out.println(id);
+	}
+}
+
+----------------------------------------------------------------------------------------
+
+public void me5(String filename) {
+	Map<String, String> map = new HashMap<String, String>();
+	
+	map.put("txt", "문서파일");
+	map.put("png", "이미지파일");
+	map.put("gif", "이미지파일");
+	map.put("jpeg", "이미지파일");
+	map.put("jpg", "이미지파일");
+	// 그 외는 "시스템파일"
+	// filename = "aaa.abb.c.de.PNg"
+	int idx = filename.lastIndexOf(".");
+	//png
+	String key = filename.substring(idx+1);//+1은 . 을 제외하기 위해서
+	//key.toLowerCase( ) : map의 key가 모두 소문자로 되어 있어서.
+	String msg = map.get(key.toLowerCase());
+		
+	if(msg==null) { //map에 없는 key를 입력하면 value로 null을 반환함.
+		System.out.println("시스템파일");
+	}else {
+		System.out.println(msg);
+}
