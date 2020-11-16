@@ -1,0 +1,125 @@
+
+2020.11.13
+
+<자바 컬렉션 프레임워크>
+
+[상자는 상자인데 무엇을 담을 수 있는 상자인가]
+상자에서 무엇이 담겨 있는지를 알려주는 것을 Generic
+
+generic : 상자에서 내용물의 이름을 적는 것 
+자바컬렉션프레임워크 <내용물의 *참조*자료형>
+
+list.clear();  => 보통 삭제할 때, 이것을 많이 사용함.
+	그렇지만, 박스를 엎어버린거라 박스는 아직 남아있고
+		내용물만 사라진 셈.
+-----------------------------------------------------------------------------------
+List 와 Set의 차이점
+ List :
+1. 중복을 허용하고, 순서를 보장하며 데이터를 보관할 때 사용된다.
+2. List는 본질적으로 순서를 관리해야 하므로, 이를 위해 내부적으로 배열(Array)을
+	사용하여 구현되어 있다. 그렇기 때문에 상대적으로 나중에 저장된 배열들을
+	찾을 땐, 시간이 오래 걸림.
+ Set : 중복을 허용하지 않고, 순서도 보장할 필요 없이 데이터를 보관할 때 사용된다.
+	HashSet은 순서를 보장할 필요가 없다. 그러므로 Set에 저장된 무엇인가를
+	찾을 때는, 순서와 상관없이 그냥 찾으면 되서, List에 비해 자유로움
+	=> Hash로 검색하면 검색시간이 데이터 크기에 상관없이 일정하게 짧다
+
+
+
+<<<List>>>
+- 중복을 허용하고, 순서를 보장하며 데이터를 보관할 때 사용된다.
+- 선언된 배열 타입이 모든 객체의 최고 조상인 Object이기 때문에,
+	모든 종류의 객체를 다룰 수 있다.
+단점 : 크기를 변경할 수 없다,
+비순차적인 데이터의 추가 또는 삭제에 처리 시간이 늘어남.
+
+# Arraylist = 크기가 변하는 배열, 사용자가 크기를 미리 선언하지 않는다면
+	입력값이 들어오는 대로 배열이 커지고, 만약 중간값이 제거된다면
+	알아서 앞으로 당겨짐.
+
+
+
+public void me2() {
+	List<Integer> list = new ArrayList<Integer>();
+	list.add(new Integer(3));
+	list.add(new Integer(4));
+	list.add(5);			// 이걸로 쓰는게 좋음.
+	list.add(6);
+		
+	int num = list.get(2);
+		System.out.println(num);
+		
+	for(int i = 0; i < list.size(); i++) {
+		int a = list.get(i);
+			System.out.println(a);
+	}
+	list.set(1, 100);		// 인덱스 1의 값을 100으로 대입
+		System.out.println(list);
+		
+	list.remove(2);		// 뒤에서 부터 삭제해야 함.
+	list.remove(1);
+		System.out.println(list);
+
+------------------------------------------------------------------------------------
+
+public void me3() {
+	List<Double> list = new ArrayList<Double>();
+	list.add(3.5);
+	list.add(4.1);
+	list.add(9.8);
+		
+	double num = list.get(1);
+		System.out.println(num);
+		
+	for(int i = 0; i < list.size(); i++) {
+		num = list.get(i);
+			System.out.println(num);
+	}
+	int idx = list.size()-1;
+	list.set(idx, 1.1);		// 가장 큰 인덱스에 1.1 대입
+		System.out.println(list);
+		
+	for(int i = list.size()-1; i >= 0; i--) {	//뒤에서부터 삭제.
+	double a = list.remove(i);	
+			System.out.println(a);
+
+=================================================
+
+<<<Set>>>
+
+Set : 데이터의 중복을 허용하지 않는다. [동등조건 인 equals( ) 로 확인]
+	입력순서와 출력순서 사이에 상관관계가 없다. -> 인덱스가 없다.
+=> 중복을 허용하지 않고, 순서도 보장할 필요 없이 데이터를 보관할 때 사용됨.
+
+Hashset : 
+add ( ) 
+get ( ) x없음  --> iterator( ) 로 대체
+size ( )
+remove (Object obj )
+clear( )
+
+-----------------------------------------------------------------------------------
+
+public void me2() {
+	Set<String> set = new HashSet<String>(); // 3개 들어감.
+		
+	set.add("hello");
+	set.add(new String("hello"));
+	set.add("hello");
+	set.add("Hello");
+	set.add(new String("Hello"));
+	set.add("HELLO");
+	set.add(new String("HELLO"));
+		
+}
+
+-----------------------------------------------------------------------------------
+
+public void me3() {
+	Set<Apple> set = new HashSet<Apple>();
+	set.add(new Apple("a001", "대구", "사과1", 1500));
+	set.add(new Apple("a002", "대전", "사과2", 2000));
+	set.add(new Apple("a003", "서울", "사과3", 3000));
+	set.add(new Apple("a004", "부산", "사과4", 2500));
+	set.add(new Apple("a005", "청송", "시과5", 1000));
+}
