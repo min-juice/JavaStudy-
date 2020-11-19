@@ -1,0 +1,81 @@
+
+2020.11.19
+
+1. 전송되는 데이터의 크기
+- 바이트스트림 : 1바이트씩 전송, All, 멀티미디어파일, ~Stream
+- 문자스트림 : 2바이트씩 전송, text, ~er
+
+바이트스트림
+: 입력과 관련된 최상위 부모클래스 : InputStream
+  출력과 관련된 최상위 부모클래스 : OutputStream
+
+# 줄바꿈 	out.write(System.getProperty("line.separator"))
+
+# PrintWriter 와 BufferedReader 를 같이 사용
+
+<직렬화>
+자바 시스템 내부에서 사용되는 Object 또는 Data를
+외부의 자바 시스템에서도 사용할 수 있도록 byte형태로 데이터를 변환하는 기술
+직렬화 시키기 위한 가장 큰 핵심은 Serializable 인터페이스를 구현한 객체여야 한다.
+
+# 객체 직렬화시 필요한 스트림 : ObjectOutPutStream : writeObject( )
+# 객체 역직렬화시 필요한 스트림 : ObjectInputStream : readObject( )
+
+<직렬화를 사용하는 이유>
+복잡한 데이터 구조의 클래스의 객체 또는 일반 ArrayList의 객체일지라도
+직렬화의 기본 조건만 지킨다면 큰 작업 없이 보다 빠른 조회와 데이터의
+매칭이 수월해짐.
+-> 쉽게 말해서 값 뿐 아니라, 객체 주소를 전달하기 위함.
+
+<역직렬화>
+byte로 변환된 Data를 원래대로 Object나 Data로 변환하는 기술
+직렬화된 바이트 형태의 데이터를 객체로 변환해서 JVM으로 상주시키는 형태
+
+**직렬화와 역직렬화를 진행하는 시스템이 서로 다를 수 있다는 것을 고려해야 함.
+자바 직렬화 대상 객체는 동일한 SerialVersionUID를 가지고 있어야 한다.
+(SerialVersionUID란 각 객체 클래스의 고유 아이디 값)
+
+------------------------------------------------------------------------------
+
+데이터 입력
+
+	public void me1() {
+	Writer out = null;
+		
+	String[] arr = {"hello", "world", "good"};
+	
+	try {
+		out = new FileWriter("C:"+File.separator+"ss.txt");
+		
+		out.write("kim");
+		out.write(System.getProperty("line.separator"));
+			
+		for(int i = 0; i < arr.length; i++) {
+			out.write(arr[i]);
+			out.write(System.getProperty("line.separator"));
+		}
+		out.flush();   // 버퍼에 남은 데이터까지 모두 출력
+
+------------------------------------------------------------------------------
+
+데이터 불러오기
+
+public void me2() {
+
+	Reader in = null;
+		
+	try {
+		in = new FileReader("C:" +File.separator+"ss.txt");
+		
+		char[] arr = new char[1024];
+		int length = -1;
+			
+		while (true) {
+			length = in.read(arr, 0, arr.length);
+			if (length == -1) {
+				break;
+			}
+			for(int i =0; i<length; i++) {
+				System.out.print(arr[i]);
+			}
+		}
