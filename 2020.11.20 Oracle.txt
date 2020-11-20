@@ -1,4 +1,5 @@
 sqlplus system/sys1234
+CREATE USER ezen IDENTIFIED BY ezen;
 
 <Oracle>
 
