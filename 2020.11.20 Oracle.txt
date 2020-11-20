@@ -1,0 +1,60 @@
+
+<Oracle>
+
+[객체]
+
+- 계정(User)
+=>일정 자격이 있는 계정에서 만듦
+- table
+- 함수(Function)
+- sequence
+- index
+- trigger
+- procedure
+
+데이터
+[ 입력, 조회, 수정, 삭제 (객체 X) ]
+------------------------------------
+
+create - 생성
+alter - 수정
+drop - 삭제
+grant - 허가
+revoke - 철회, 취소
+insert - 입력
+select - 조회
+update - 수정
+delete - 삭제
+
+commit - 확정(입력, 수정, 삭제)
+rollback - 되돌리기
+
+------------------
+
+객체를 생성, 수정, 삭제 하는 SQL문
+-> [ DDL (Data, Definition, Language) ]
+Create, Alter, Drop
+
+보안적인 요소를 담고 있는 SQL문
+-> [ DCL (Data, Control, Language) ]
+Grant, Revoke
+
+-> [ TCL (Transaction, Control, Language) ]
+Commit, Rollback
+
+-> [ DML (
+Insert, Select, Update, Delete
+
+----------------------------------------------------------
+
+연결 - conn ezen/ezen
+유저확인 - show user
+권한 부여 - GRANT CONNECT, RESOURCE, DBA TO ezen;
+권한 철회 - REVOKE CONNECT, RESOURCE, DBA FROM ezen;
+테이블 생성 - CREATE TABLE 테이블명;
+테이블 확인 - desc 테이블명
+
+
+
+
+
