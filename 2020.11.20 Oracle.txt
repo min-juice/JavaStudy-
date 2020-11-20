@@ -1,3 +1,4 @@
+sqlplus system/sys1234
 
 <Oracle>
 
@@ -30,6 +31,9 @@ commit - 확정(입력, 수정, 삭제)
 rollback - 되돌리기
 
 ------------------
+SQL문 입력할 떄는 대소문자 구분하지 않음.
+그러나 데이터 입력할 땐 대소문자 구분.
+숫자를 제외한 모든 자료형은 '작은따옴표' 에 넣어서 입력.
 
 객체를 생성, 수정, 삭제 하는 SQL문
 -> [ DDL (Data, Definition, Language) ]
@@ -54,7 +58,8 @@ Insert, Select, Update, Delete
 테이블 생성 - CREATE TABLE 테이블명;
 테이블 확인 - desc 테이블명
 
+데이터 입력 - INSERT INTO 테이블명 (mid) VALUES ('m001');
+(모든 데이터) INSERT INTO 테이블명 VALUES ('m005', 'Kang', 'a', '1990-10-03');
 
-
-
+데이터 조회 - (모든데이터) SELECT * FROM member;
 
