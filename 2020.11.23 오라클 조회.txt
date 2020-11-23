@@ -1,10 +1,11 @@
+2020.11.23
 
-?? name이 NULL이 아닌 레코드 정보를 조외하시오
+?? name이 NULL이 아닌 레코드를 조회하시오
 단, 레코드에 대한 정렬은 age가 증가되게 정렬하고
 만약 age가 같으면 name을 내림차순으로 정렬하시오
 select * from test WHERE name IS not null order by age ASC, name desc
 
-?? name이 NULL인 레코드 정보를 조회하시오
+?? name이 NULL인 레코드를 조회하시오
 단 컬럼은 name만 있음.
 select name as 이름, age 나이 from test where name is null
 
@@ -32,3 +33,46 @@ select * from test where age > 25 and age < 47
 
 ?? test 테이블에서 age가 25보다 크거나 같고 age 47보다 작거나 같은 레코드를 조회하시오
 select * from test where age >= 25 or age <= 47
+select * from test where age between 25 and 47
+
+?? test 테이블에서 name kXX의 레코드를 조회하시오
+select * from test where name like 'k__'
+
+?? test 테이블에서 몇글자인지는 모르지만 o 로 끝나는 레코드를 조회하시오.
+select * from test where name like '%o'
+
+?? test 테이블에서 몇글자인지는 모르지만 중간에 o가 들어가는 레코드를 조회하시오.
+select * from test where name like '%o%'
+
+===========================================================
+
+age asc
+age desc
+
+age is order by age asc
+age is order by age desc
+
+age is null
+age is not null
+
+age = 10
+age > 10
+age != 10
+
+age = 10 or age = 20
+age in(10, 20)
+age not in(10,20)
+
+age >10 or age < 20
+age >= 10 and age =< 20
+age  between 10 and 20
+
+age like 5_
+age like _5_
+age like 1%
+age like %1%
+
+name like 'K__'
+name like '_K_'
+name like 'K%'
+name like '%K%'
