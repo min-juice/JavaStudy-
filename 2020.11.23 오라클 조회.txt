@@ -1,0 +1,34 @@
+
+?? name이 NULL이 아닌 레코드 정보를 조외하시오
+단, 레코드에 대한 정렬은 age가 증가되게 정렬하고
+만약 age가 같으면 name을 내림차순으로 정렬하시오
+select * from test WHERE name IS not null order by age ASC, name desc
+
+?? name이 NULL인 레코드 정보를 조회하시오
+단 컬럼은 name만 있음.
+select name as 이름, age 나이 from test where name is null
+
+?? test 테이블에서 age가 55인 레코드를 조회하시오
+select * from test where age = 55
+
+?? test 테이블에서 age가 null인 레코드를 조회하시오
+select * from test where age is null
+
+?? test 테이블에서 age가 40보다 큰 레코드를 조회하시오
+select * from test where age > 30
+
+?? test 테이블에서 age가 20이거나 23이거나 40인 레코드를 조회하시오
+select * from test where age = 20 or age = 23 or age = 40
+select * from test where age in(20, 23, 40)
+
+?? test 테이블에서 age가 20, 23,40 가 아닌 레코드를 조회하시오
+select * from test where age not in(20, 23, 40)
+
+?? test 테이블에서 name kim이고 age 33인 레코드를 조회하시오
+select * from test where name = 'kim' and age = 20
+
+?? test 테이블에서 age가 25보다 크고 age 47보다 작은 레코드를 조회하시오
+select * from test where age > 25 and age < 47
+
+?? test 테이블에서 age가 25보다 크거나 같고 age 47보다 작거나 같은 레코드를 조회하시오
+select * from test where age >= 25 or age <= 47

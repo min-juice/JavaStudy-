@@ -27,6 +27,12 @@ insert - 입력
 select - 조회
 update - 수정
 delete - 삭제
+where - 특정파트 불러오기
+alias - 컬럼에 별명 넣기
+
+order by - 정렬
+asc - 오름차순
+desc - 내림차순
 
 commit - 확정(입력, 수정, 삭제)
 rollback - 되돌리기
@@ -47,20 +53,37 @@ Grant, Revoke
 -> [ TCL (Transaction, Control, Language) ]
 Commit, Rollback
 
--> [ DML (
-Insert, Select, Update, Delete
+-> [ DML (Insert, Select, Update, Delete)
 
 ----------------------------------------------------------
 
-연결 - conn ezen/ezen
-유저확인 - show user
-권한 부여 - GRANT CONNECT, RESOURCE, DBA TO ezen;
-권한 철회 - REVOKE CONNECT, RESOURCE, DBA FROM ezen;
-테이블 생성 - CREATE TABLE 테이블명;
-테이블 확인 - desc 테이블명
+# 연결 - conn ezen/ezen
+# 유저확인 - show user
+# 권한 부여 - GRANT CONNECT, RESOURCE, DBA TO ezen;
+# 권한 철회 - REVOKE CONNECT, RESOURCE, DBA FROM ezen;
+# 테이블 생성 - CREATE TABLE 테이블명;
+# 테이블 확인 - desc 테이블명
 
-데이터 입력 - INSERT INTO 테이블명 (mid) VALUES ('m001');
+# 데이터 입력 - INSERT INTO 테이블명 (mid) VALUES ('m001');
 (모든 데이터) INSERT INTO 테이블명 VALUES ('m005', 'Kang', 'a', '1990-10-03');
 
-데이터 조회 - (모든데이터) SELECT * FROM member;
+# 데이터 조회 - (모든데이터) SELECT * FROM member;
+(특정 정보) SELECT * from member WHERE name IS NULL;
+(특정 컬럼) select name from test
+(테이블에 등록된 성 씨를 중복없이 출력하시오 - select distinct name from test)
+
+# 데이터 수정 - UPDATE 유저명 SET 테이블명 = ' ' WHERE mid = ' ';
+(모든 column) UPDATE 유저명 SET 테이블명 = ' ';
+(특정 정보) UPDATE member SET name = 'choi' WHERE mid = 'm001';
+(복수) UPDATE member SET job = 'd', birth = '1888-05-03' WHERE mid = 'm001';
+
+# 데이터 삭제 - DELETE from member WHERE job = 'a';
+
+# 컬럼에 별명 넣기 - select name as 이름, age as 나이 from test
+
+# 이름을 기준으로 내림차순 정렬 - select * from test order by name desc
+# 이름을 기준으로 오름차순 정렬 - select * from test order by age asc
+
+
+
 
