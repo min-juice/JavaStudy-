@@ -1,0 +1,47 @@
+
+2020.11.24
+
+<기본키>
+
+@ DB에 데이터를 저장한 상태에서 컬럼 하나만을 이용해서
+특정 레코드 하나만을 조회 하고 싶을 때
+=> 기본키 = 주키 = primary key = pk
+
+# 기본키를 설정하면 기본키에 대해 NOT NULL 제약조건이 추가된다.
+
+1. ALTER TABLE member ADD CONSTRAINT pk_member2_mid PRIMARY KEY(mid)
+
+2. CREATE TABLE test3(
+id VARCHAR2(6),
+age NUMBER(3)
+CONSTRAINT pk_test3_id PRIMARY KEY(id)
+)
+
+3. CREATE TABLE test2(
+id VARCHAR2(6) PRIMARY KEY,
+age NUMBER(3)
+)
+
+<외래키>
+
+# 외래키는 NULL 값을 넣을 수 있음.
+# 부모테이블의 데이터에 없는 값은 입력이 안됨. 참조무결성 제약조건에 위반
+
+@ 외래키(= foreign key = fk)가 되려면,
+반드시 다른 테이블의 기본키(= 주키 = primary key = pk) 이어야 함.
+
+ALTER TABLE depart ADD CONSTRAINT pk_depart_edep PRIMARY KEY(edep)
+
+ALTER TABLE employee ADD CONSTRAINT fk_employee_edep FOREIGN KEY(edep)
+REFERENCES depart(edep)
+
+
+부모클래스 테이블생성 -> 부모클래스 insert -> 부모클래스 pk
+-> 자식클래스 테이블생성 -> 자식클래스 pk
+-> 외래키 생성 // ALTER TABLE 자식클래스 ADD CONSTRAINT fk_자식클래스_menu
+FOREIGN KEY (컬럼명) REFERENCES 부모클래스(컬럼명)
+-> 자식클래스 insert
+
+
+
+

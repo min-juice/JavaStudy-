@@ -1,0 +1,101 @@
+
+2020.11.24
+
+< MemberDAO /w Oracle >
+
+[ Member DAO ]
+public class MemberDAO {
+	private final String DRIVER_NAME = "oracle.jdbc.OracleDriver";
+	private final String URL = "jdbc:oracle:thin:@localhost:1521:xe";
+	private final String USER_NAME = "ezen";
+	private final String PASSWORD = "ezen";
+
+	public MemberDAO() {
+
+		try {
+			Class.forName("oracle.jdbc.OracleDriver");
+			System.out.println("드라이버 로딩 성공");
+		} catch (ClassNotFoundException e) {
+			System.out.println("드라이버 로딩 실패");
+			e.printStackTrace();
+		}
+	}	
+
+====================================================
+[ INSERT ]
+
+	public void insert(MemberDTO dto) {
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "INSERT INTO member (mid, name, job, birth) VALUES (?, ?, ?, ?)";
+
+		try {
+			conn = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
+			System.out.println("커넥션 연결 성공");
+
+			pstmt = conn.prepareStatement(sql);
+			System.out.println("prepareStatement 생성 성공");
+
+			pstmt.setString(1, dto.getMid());
+			pstmt.setString(2, dto.getName());
+			pstmt.setString(3, dto.getJob());
+			pstmt.setDate(4, dto.getBirth());
+
+			pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			System.out.println("prepareStatement 생성 실패");
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+	}
+
+=====================================================
+
+[ DELETE ]
+
+	public void delete(MemberDTO dto) {
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		String sql = "DELETE FROM member WHERE MID = ?";
+
+		try {
+
+			conn = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
+
+			pstmt = conn.prepareStatement(sql);
+			System.out.println("prepareStatement 삭제 성공");
+
+			pstmt.setString(1, dto.getMid());
+
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println("prepareStatement 삭제 실패");
+			e.printStackTrace();
+		} finally {
+			try {
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				if (conn != null) {
+					conn.close();
+				}
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+
+	}
