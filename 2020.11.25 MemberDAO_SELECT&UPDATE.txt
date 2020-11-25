@@ -1,0 +1,78 @@
+
+2020.11.25
+
+update 에서 기존의 데이터를 변경하려면
+main에서 select로 기존의 데이터를 불러온 후, 업데이트 해야함.
+
+main =>
+	MemberDTO odto = dao2.selectByMid("m005");
+	MemberDTO dto = new MemberDTO("m005", "lee",odto.getJob() ,dto.getBirth());
+	dao2.update(dto);
+
+memberDAO =>
+
+public MemberDTO selectByMid(String mid) {
+		
+	MemberDTO dto = null;
+		
+	Connection conn = null;
+	PreparedStatement pstmt = null;
+	String sql = "SELECT * FROM member WHERE mid = ?";
+	ResultSet rs = null;
+		
+	try {
+		conn = DriverManager.getConnection(URL, USER_NAME, PASSWORD);
+		pstmt = conn.prepareStatement(sql);
+			
+		pstmt.setString(1, mid);
+			
+		rs = pstmt.executeQuery();
+			
+		// rs에 저장된 데이터는 최대 1개
+		// 반복문
+			
+		if (rs.next()) {
+			String job = rs.getString("job");
+			String name = rs.getString("name");
+			Date birth = rs.getDate("birth");
+				
+			dto = new MemberDTO(mid, name, job, birth);
+			
+			}
+			
+	} catch (Exception e) {
+		e.printStackTrace();
+	} finally {
+		try {
+			if(rs != null) {
+				rs.close();
+			}
+			if (pstmt != null) {
+				pstmt.close();
+			}
+			if (conn != null) {
+				conn.close();
+			}
+		} catch (Exception e2) {
+			e2.printStackTrace();
+		}
+	}
+		
+	return dto;
+}
+
+===================================================
+
+insert = "INSERT INTO member (mid, name, job, birth) VALUES (?, ?, ?, ?)";
+select = "SELECT name 이름, job 직업, birth 생일 FROM member WHERE mid =?";
+list select = "SELECT * FROM member";
+update = "UPDATE member SET name = ?, job =?, birth =? WHERE mid =?";
+delete = "DELETE FROM member WHERE mid = ?";
+
+public void insert(MemberDTO dto)
+public MemberDTO selectByMid(String mid)
+public List<MemberDTO> select()
+public void update(MemberDTO dto)
+public void delete(MemberDTO dto)
+
+
